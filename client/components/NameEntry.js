@@ -16,15 +16,17 @@ class NameEntry extends Component {
   render() {
     return (
       <form className="form-inline">
-        <label htmlFor="name">Your name:</label>
-        <input
-          type="text"
-          name="name"
-          placeholder="Enter your name"
-          className="form-control"
-          onChange={this.handleChange}
-          value={this.props.name}
-        />
+        <span className="nameEntry">
+          <label htmlFor="name">Your name:</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+            className="form-control"
+            onChange={this.handleChange}
+            value={this.props.name}
+          />
+        </span>
       </form>
     );
   }

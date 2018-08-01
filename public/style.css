@@ -19,3 +19,12 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.nameEntry {
+  display: flex;
+  margin-left: 976px;
+}
+
+.message {
+  margin-bottom: 30px;
+}

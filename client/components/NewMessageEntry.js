@@ -37,7 +37,8 @@ class NewMessageEntry extends Component {
                         placeholder="Say something nice..."
                     />
                     <span className="input-group-btn">
-                        <button className="btn btn-default" type="submit">Make A GIF!</button>
+
+                        <button class="btn btn-info btn-rounded btn-sm waves-effect waves-light float-right" type="submit">Make A GIF!</button>
                     </span>
                 </div>
             </form>

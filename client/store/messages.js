@@ -7,12 +7,13 @@ import socket from '../socket';
 const defaultMessage = {
     newMessageEntry: '',
     messages: [],
-    name: 'sivan'
+    name: ''
 }
 // ACTION TYPES
 const WRITE_MESSAGE = 'WRITE_MESSAGE';
 const GET_MESSAGE = 'GET_MESSAGE'
 const UPDATE_NAME = 'UPDATE_NAME';
+const GOT_MESSAGES_FROM_SERVER = 'GOT_MESSAGES_FROM_SERVER'
 
 
 // ACTION CREATORS
@@ -28,16 +29,30 @@ export const getMessage = (message) => {
     return { type: GET_MESSAGE, message };
 }
 
-export const postMessage = (gitName, name) => {
+export const gotMessagesFromServer = (messages) => ({
+    type: GOT_MESSAGES_FROM_SERVER,
+    messages
+});
+
+export const fetchMessages = () => {
+    return async (dispatch) => {
+        const response = await axios.get('/api/gif/');
+        const messages = response.data;
+        const action = gotMessagesFromServer(messages);
+        dispatch(action);
+    };
+};
+
+
+
+
+export const postMessage = (gifname, name) => {
     console.log(name)
     return async (dispatch) => {
-        const response = await axios.get(`/api/gif/${name}/${gitName}`);
+        const response = await axios.post('/api/gif/', { name, gifname });
         const newMessage = response.data;
         const action = getMessage(newMessage);
         dispatch(action);
-        // also a possibility!
-        // const clearMessageAction = writeMessage('')
-        // dispatch(clearMessageAction)
         socket.emit('new-message', newMessage);
     }
 }
@@ -60,6 +75,9 @@ export default function (state = defaultMessage, action) {
                 ...state,
                 name: action.name
             };
+        case GOT_MESSAGES_FROM_SERVER: {
+            return { ...state, messages: action.messages };
+        }
         default:
             return state
     }

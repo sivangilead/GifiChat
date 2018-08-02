@@ -8,14 +8,17 @@ let mainWindow
 
 function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({ width: 800, height: 600, icon: path.join(__dirname, 'assets/icons/png/64x64.png') })
+  console.log('dirname', __dirname);
+  var iconPath = path.join(__dirname, 'assets/icons/png/64x64.png');
+  console.log('iconPath', iconPath)
+  mainWindow = new BrowserWindow({ width: 800, height: 600, icon: iconPath })
   // const startUrl = process.env.ELECTRON_START_URL || url.format({
   //   pathname: path.join(__dirname, '/../build/index.html'),
   //   protocol: 'file:',
   //   slashes: true
   // });
   // mainWindow.loadURL(startUrl);
-  mainWindow.loadURL('http://localhost:8080')
+  mainWindow.loadURL('https://gifichat.herokuapp.com/')
 
   // and load the index.html of the app.
   // mainWindow.loadFile('index.html')

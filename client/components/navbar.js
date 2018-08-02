@@ -1,56 +1,59 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { deleteMessages } from '../store/messages';
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>BOILERMAKER</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
-)
 
-/**
- * CONTAINER
- */
-const mapState = state => {
-  return {
-    isLoggedIn: !!state.user.id
-  }
-}
+class Navbar extends Component {
 
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
+
+    render() {
+        const name = this.props.name;
+        return (
+
+            <nav className='nav'>
+
+                {(this.props.location.pathname.includes('chat')) ?
+                    <div className='nav'>
+                        <div className="nav-item" className="flexname">
+                            <img height="20" src='user2.png' alt="image" />
+                            <p className="nav-item">{name}</p>
+
+
+                        </div>
+                        <Link to="/chat" onClick={() => {
+                            this.props.deleteMessages('')
+                        }} className="nav-item">
+                            <img height="20" src='clear.png' alt="image" />
+                        </Link>
+
+                        <Link to="/" className="nav-item" >
+                            <img height="20" src='exit.png' alt="image" />
+                        </Link>
+                    </div>
+                    : <h1></h1>
+                }
+            </nav>
+        )
     }
-  }
 }
 
-export default connect(mapState, mapDispatch)(Navbar)
 
-/**
- * PROP TYPES
- */
-Navbar.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+
+
+
+
+const mapStateToProps = (state) => {
+    return {
+        name: state.messages.name
+    }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteMessages: () => dispatch(deleteMessages())
+    }
+}
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navbar));

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Message from './Message';
 import NewMessageEntry from './NewMessageEntry';
 import { fetchMessages } from '../store/messages';
+import { Link } from 'react-router-dom';
 
 class Messages extends Component {
 

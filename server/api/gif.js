@@ -10,6 +10,15 @@ router.get('/', async (req, res, next) => {
     res.json(messages);
 });
 
+router.delete('/', async (req, res, next) => {
+    const messages = await Message.findAll()
+    messages.forEach(async message => {
+        await message.destroy()
+    })
+
+    res.send([]);
+});
+
 router.post('/', async (req, res, next) => {
     try {
         const gifname = req.body.gifname;

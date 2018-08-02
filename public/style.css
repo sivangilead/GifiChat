@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  background-color: rgb(94, 85, 125)
 }
 
 a {
@@ -22,9 +23,52 @@ form div {
 
 .nameEntry {
   display: flex;
-  margin-left: 500px;
+  margin-left: 280px;
 }
 
 .message {
   margin-bottom: 30px;
 }
+
+.nav-item {
+  height: 1.5em;
+  margin: 0 1.5em 0 0;
+}
+
+.nav-item h3:hover {
+  color: #202b47;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: #d3d3d3;
+}
+
+.nav {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  float: right;
+  clear: both;
+  background-color: cadetblue
+}
+
+.newEntry {
+  color: white;
+  position: fixed;
+  padding: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.flexname {
+  display: flex;
+}
+
+.form-inline {
+  margin-top: 30%;
+  display: flex;
+}
+
+/* .gif {
+  margin-right: 100%;
+} */

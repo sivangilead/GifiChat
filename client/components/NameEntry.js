@@ -1,32 +1,45 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateName } from '../store/messages';
+import { Link } from 'react-router-dom'
 
 class NameEntry extends Component {
 
   constructor() {
     super();
+    this.state = {
+      name: ''
+    }
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(evt) {
-    this.props.updateName(evt.target.value);
+    this.setState({ name: evt.target.value });
   }
 
   render() {
     return (
       <form className="form-inline">
         <span className="nameEntry">
-          <label htmlFor="name">Your name:</label>
+          <label htmlFor="name"></label>
           <input
             type="text"
             name="name"
             placeholder="Enter your name"
             className="form-control"
             onChange={this.handleChange}
-            value={this.props.name}
+            value={this.state.name}
           />
         </span>
+
+        <Link
+          to="/chat"
+          onClick={() => {
+            this.props.updateName(this.state.name)
+          }}
+        >
+          <img height="50" src='arrow.png' alt="image" />
+        </Link>
       </form>
     );
   }

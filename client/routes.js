@@ -6,6 +6,7 @@ import { Login, Signup, UserHome } from './components'
 import { me } from './store'
 import MessagesList from './components/MessagesList'
 import NameEntry from './components/NameEntry'
+import Navbar from './components/Navbar'
 /**
  * COMPONENT
  */
@@ -19,8 +20,9 @@ class Routes extends Component {
 
     return (
       <div>
-        <NameEntry />
-        <MessagesList />
+        <Navbar />
+        <Route exact path="/" component={NameEntry} />
+        <Route path="/chat" component={MessagesList} />
       </div>
     )
   }

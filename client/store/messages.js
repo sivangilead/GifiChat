@@ -43,7 +43,14 @@ export const fetchMessages = () => {
     };
 };
 
-
+export const deleteMessages = () => {
+    return async (dispatch) => {
+        const response = await axios.delete('/api/gif/');
+        const messages = response.data;
+        const action = gotMessagesFromServer(messages);
+        dispatch(action);
+    };
+};
 
 
 export const postMessage = (gifname, name) => {

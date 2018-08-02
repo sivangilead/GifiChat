@@ -19,14 +19,14 @@ class NewMessageEntry extends Component {
 
         const { newMessageEntry, name } = this.props;
         const content = newMessageEntry;
-        console.log(name)
+        console.log('name', name)
         this.props.postMessage(content, name);
         // this.props.writeMessage('');
     }
 
     render() {
         return (
-            <form id="new-message-form" onSubmit={this.handleSubmit}>
+            <form id="new-message-form" className="newEntry" onSubmit={this.handleSubmit}>
                 <div className="input-group input-group-lg">
                     <input
                         className="form-control"

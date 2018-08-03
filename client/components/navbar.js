@@ -10,7 +10,6 @@ class Navbar extends Component {
     render() {
         const name = this.props.name;
         return (
-
             <nav className='nav'>
 
                 {(this.props.location.pathname.includes('chat')) ?

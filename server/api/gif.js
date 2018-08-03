@@ -23,14 +23,19 @@ router.post('/', async (req, res, next) => {
     try {
         const gifname = req.body.gifname;
         const name = req.body.name;
-        const response = await client.search('gifs', { q: gifname, limit: 1 });
+        const response = await client.search('gifs', { q: gifname, limit: 20 });
         const author = await Author.findOrCreate({
             where: {
                 name: name
             }
         });
+        let gifresult = []
+        for (let i = 0; i < response.data.length; i++) {
+            gifresult.push(response.data[i].images.original.webp_url)
+        }
+        // const imageUrl = response.data[0].images.original.webp_url;
 
-        const imageUrl = response.data[0].images.original.webp_url;
+        const imageUrl = gifresult[Math.floor(Math.random() * gifresult.length)];
 
         const message = await Message.create({ content: imageUrl, authorId: author[0].id });
         const message1 = await Message.findOne({ where: { id: message.id }, include: [{ model: Author }] });

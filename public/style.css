@@ -23,11 +23,13 @@ form div {
 
 .nameEntry {
   display: flex;
-  margin-left: -100px;
+  margin-left: 300px;
 }
 
 .message {
+  /* position: relative; */
   margin-bottom: 30px;
+  margin-left: 28%;
 }
 
 .nav-item {
@@ -70,11 +72,15 @@ form div {
 }
 
 .sidebar {
-  position: static;
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
   margin-right: 50%;
   background-color: cadetblue;
   float: left;
   clear: both;
+}
+
+.title {
+  margin-top: 0px;
 }

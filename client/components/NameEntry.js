@@ -19,28 +19,31 @@ class NameEntry extends Component {
 
   render() {
     return (
-      <form className="form-inline">
-        <span className="nameEntry">
-          <label htmlFor="name"></label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-            className="form-control"
-            onChange={this.handleChange}
-            value={this.state.name}
-          />
-        </span>
+      <div>
+        <h1 className="title">Welcome to Gifi Chat</h1>
+        <form className="form-inline">
+          <span className="nameEntry">
+            <label htmlFor="name"></label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+              className="form-control"
+              onChange={this.handleChange}
+              value={this.state.name}
+            />
+          </span>
 
-        <Link
-          to="/chat"
-          onClick={() => {
-            this.props.updateName(this.state.name)
-          }}
-        >
-          <img height="50" src='arrow.png' alt="image" />
-        </Link>
-      </form>
+          <Link
+            to="/chat"
+            onClick={() => {
+              this.props.updateName(this.state.name)
+            }}
+          >
+            <img height="50" src='arrow.png' alt="image" />
+          </Link>
+        </form>
+      </div>
     );
   }
 }

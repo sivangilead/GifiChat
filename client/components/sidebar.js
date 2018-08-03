@@ -20,8 +20,6 @@ class SideBar extends Component {
                             {this.props.guests.map(guest => {
                                 return <li>{guest}</li>
                             }
-
-
                             )}
                             <ExitWindow />
                         </ul>

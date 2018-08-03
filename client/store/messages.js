@@ -7,17 +7,20 @@ import socket from '../socket';
 const defaultMessage = {
     newMessageEntry: '',
     messages: [],
-    name: ''
+    name: '',
+    guests: []
 }
 // ACTION TYPES
 const WRITE_MESSAGE = 'WRITE_MESSAGE';
 const GET_MESSAGE = 'GET_MESSAGE'
 const UPDATE_NAME = 'UPDATE_NAME';
 const GOT_MESSAGES_FROM_SERVER = 'GOT_MESSAGES_FROM_SERVER'
+const ADD_GUEST = 'ADD_GUEST'
 
 
 // ACTION CREATORS
 export const updateName = (name) => {
+    socket.emit('add-guest', name);
     return { type: UPDATE_NAME, name };
 }
 
@@ -33,6 +36,15 @@ export const gotMessagesFromServer = (messages) => ({
     type: GOT_MESSAGES_FROM_SERVER,
     messages
 });
+
+export const addGuest = (guest) => {
+    return { type: ADD_GUEST, guest };
+}
+export const removeGuest = (guest) => {
+    socket.emit('remove-guest', guest)
+}
+
+
 
 export const fetchMessages = () => {
     return async (dispatch) => {
@@ -84,6 +96,9 @@ export default function (state = defaultMessage, action) {
             };
         case GOT_MESSAGES_FROM_SERVER: {
             return { ...state, messages: action.messages };
+        }
+        case ADD_GUEST: {
+            return { ...state, guests: action.guest }
         }
         default:
             return state

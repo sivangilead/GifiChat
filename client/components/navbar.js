@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { deleteMessages } from '../store/messages';
+import { deleteMessages, removeGuest } from '../store/messages';
 
 
 class Navbar extends Component {
@@ -27,7 +27,9 @@ class Navbar extends Component {
                             <img height="20" src='clear.png' alt="image" />
                         </Link>
 
-                        <Link to="/" className="nav-item" >
+                        <Link to="/" onClick={() => {
+                            this.props.removeGuest(name)
+                        }} className="nav-item" >
                             <img height="20" src='exit.png' alt="image" />
                         </Link>
                     </div>
@@ -51,7 +53,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteMessages: () => dispatch(deleteMessages())
+        deleteMessages: () => dispatch(deleteMessages()),
+        removeGuest: (name) => dispatch(removeGuest(name))
     }
 }
 

@@ -23,7 +23,7 @@ form div {
 
 .nameEntry {
   display: flex;
-  margin-left: 280px;
+  margin-left: -100px;
 }
 
 .message {
@@ -69,6 +69,12 @@ form div {
   display: flex;
 }
 
-/* .gif {
-  margin-right: 100%;
-} */
+.sidebar {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 50%;
+  background-color: cadetblue;
+  float: left;
+  clear: both;
+}

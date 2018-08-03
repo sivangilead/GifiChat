@@ -7,6 +7,7 @@ import { me } from './store'
 import MessagesList from './components/MessagesList'
 import NameEntry from './components/NameEntry'
 import Navbar from './components/Navbar'
+import SideBar from './components/sidebar'
 /**
  * COMPONENT
  */
@@ -21,6 +22,7 @@ class Routes extends Component {
     return (
       <div>
         <Navbar />
+        <SideBar />
         <Route exact path="/" component={NameEntry} />
         <Route path="/chat" component={MessagesList} />
       </div>

@@ -8,20 +8,27 @@ class NewMessageEntry extends Component {
         super();
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.scrollToBottom = this.scrollToBottom.bind(this);
     }
 
     handleChange(evt) {
         this.props.writeMessage(evt.target.value);
     }
 
-    handleSubmit(evt) {
+    async handleSubmit(evt) {
         evt.preventDefault();
 
         const { newMessageEntry, name } = this.props;
         const content = newMessageEntry;
         console.log('name', name)
-        this.props.postMessage(content, name);
-        // this.props.writeMessage('');
+        await this.props.postMessage(content, name);
+        this.props.writeMessage('');
+        this.scrollToBottom();
+    }
+
+    scrollToBottom() {
+        const chatPage = document.querySelector(".chat-page");
+        chatPage.scrollTo(0, chatPage.scrollHeight);
     }
 
     render() {
@@ -29,15 +36,15 @@ class NewMessageEntry extends Component {
             <form id="new-message-form" className="newEntry" onSubmit={this.handleSubmit}>
                 <div className="input-group input-group-lg">
                     <input
-                        className="form-control"
+                        className="chat-input"
                         type="text"
                         name="content"
                         value={this.props.newMessageEntry}
                         onChange={this.handleChange}
+                        autoComplete="off"
                         placeholder="Say something nice..."
                     />
                     <span className="input-group-btn">
-
                         <button class="btn btn-info btn-rounded btn-sm waves-effect waves-light float-right" type="submit">Make A GIF!</button>
                     </span>
                 </div>

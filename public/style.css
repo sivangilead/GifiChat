@@ -1,6 +1,7 @@
 html, body, #app {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -91,4 +92,30 @@ form div {
 img.logo {
   margin: 0 auto;
   display: block;
+}
+
+.chat-input {
+  flex: unset;
+  width: calc(100% - 150px);
+  padding: .5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: .3rem;
+  border: 1px solid #ced4da;
+}
+
+.btn {
+  height: 48px;
+  margin-left: 16px;
+  border: 1px solid black;
+}
+
+.page-wrapper {
+  height: 100%;
+}
+
+.chat-page {
+  width: 100%;
+  height: calc(100% - 80px);
+  overflow-y: auto;
 }

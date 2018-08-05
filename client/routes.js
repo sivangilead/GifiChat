@@ -20,7 +20,7 @@ class Routes extends Component {
     // const {isLoggedIn} = this.props
 
     return (
-      <div>
+      <div className="page-wrapper">
         <Navbar />
         <SideBar />
         <Route exact path="/" component={NameEntry} />

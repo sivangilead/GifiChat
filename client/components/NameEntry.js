@@ -20,7 +20,8 @@ class NameEntry extends Component {
   render() {
     return (
       <div>
-        <h1 className="title">Welcome to Gifi Chat</h1>
+        <h1 className="title">Welcome To:</h1>
+        <img height="180" className="logo last-message text-muted" src='512x512.png' alt="image" />
         <form className="form-inline">
           <span className="nameEntry">
             <label htmlFor="name"></label>
@@ -32,16 +33,15 @@ class NameEntry extends Component {
               onChange={this.handleChange}
               value={this.state.name}
             />
+            <Link
+              to="/chat"
+              onClick={() => {
+                this.props.updateName(this.state.name)
+              }}
+            >
+              <img height="50" src='arrow.png' alt="image" />
+            </Link>
           </span>
-
-          <Link
-            to="/chat"
-            onClick={() => {
-              this.props.updateName(this.state.name)
-            }}
-          >
-            <img height="50" src='arrow.png' alt="image" />
-          </Link>
         </form>
       </div>
     );

@@ -1,6 +1,11 @@
+html, body, #app {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   font-family: sans-serif;
-  background-color: rgb(94, 85, 125)
+  background-color: rgb(59, 169, 169)
 }
 
 a {
@@ -23,7 +28,7 @@ form div {
 
 .nameEntry {
   display: flex;
-  margin-left: 300px;
+  margin: 0 auto;
 }
 
 .message {
@@ -50,7 +55,6 @@ form div {
   flex-wrap: wrap;
   float: right;
   clear: both;
-  background-color: cadetblue
 }
 
 .newEntry {
@@ -67,7 +71,6 @@ form div {
 }
 
 .form-inline {
-  margin-top: 30%;
   display: flex;
 }
 
@@ -76,11 +79,16 @@ form div {
   display: flex;
   flex-wrap: wrap;
   margin-right: 50%;
-  background-color: cadetblue;
   float: left;
   clear: both;
 }
 
 .title {
-  margin-top: 0px;
+  margin: 48px 0;
+  text-align: center;
+}
+
+img.logo {
+  margin: 0 auto;
+  display: block;
 }
